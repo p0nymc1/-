@@ -1,9 +1,17 @@
 const express = require('express');
+const helmet = require('helmet');
 const app = express();
-
-
-
-
+app.use(helmet());
+app.use(helmet.noCache());
+app.use(helmet.frameguard());
+app.use(helmet({
+  frameguard: false
+}));
+app.use(helmet({
+  frameguard: {
+    action: 'deny'
+  }
+}));
 
 
 
